@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Users management</title>
+</head>
+<body>
+	<div>
+		<h1>Professor Management System</h1>
+		<hr>
+		<h2>Update Professor</h2>
+		<form action="#" th:action="@{/saveProf}" th:object="${prof}"
+			method="POST">
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{profId}" /> 
+			<input type="text" th:field="*{nome}">
+			<select class="form-control" th:field="*{dept}">
+				<option th:value="${null}" th:text="${'Selecione um departamento...'}"></option>
+				<option th:each="dept : ${depts}" th:value="${{dept}}" th:text="${dept.nome}"></option>
+			</select>
+			<button type="submit">Update Prof</button>
+		</form>
+		<hr>
+		<a th:href="@{/profs}"> Back to professors list</a>
+	</div>
+</body>
+</html>

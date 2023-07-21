@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Professors management</title>
+</head>
+<body>
+	<div>
+		<h1>Professor Management System</h1>
+		<hr>
+		<h2>Save Professor</h2>
+		<form action="#" th:action="@{/saveProf}" th:object="${newProf}"
+			method="POST">
+
+			<input type="text" th:field="*{profId}" placeholder="Prof id">
+
+			<input type="text" th:field="*{nome}" placeholder="Prof Name">
+			<select class="form-control"
+				th:field="*{dept}">
+				<option th:value="${null}" th:text="${'Selecione um departamento...'}"></option>
+				<option th:each="dept : ${depts}" th:value="${{dept}}" th:text="${dept.nome}"></option>
+			</select>
+			<button type="submit">Save Prof</button>
+		</form>
+		<hr>
+		<a th:href="@{/}"> Back to Professors List</a>
+	</div>
+</body>
+</html>
